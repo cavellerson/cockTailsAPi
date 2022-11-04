@@ -6,6 +6,7 @@ function RandomDrink() {
     const [randomDrinkIngredients, setRandomDrinkIngredients] = useState('')
     const [nextDrinkButton, setNextDrinkButton] = useState(false)
     const vowels = ['a', 'e', 'i', 'o', 'u', 'y']
+
     const getDrinkIngredients = (randomDrinkObject) => {
 
         let ingredientsArray = []
@@ -42,7 +43,6 @@ function RandomDrink() {
                     setNextDrinkButton(true)
                 }
             }}>next drink</button>
-            <h1>Random Drink</h1>
             {randomDrinkObject ?
                 <div>
                     <h1>{randomDrinkName}</h1>
@@ -53,7 +53,6 @@ function RandomDrink() {
                     {vowels.includes(randomDrinkName[0].toLowerCase()) ? <h2>How to make an {randomDrinkName} </h2> : <h2>How to make a {randomDrinkName} </h2>}
 
                     <p>{randomDrinkObject.strInstructions}</p>
-                    <pre>{JSON.stringify(randomDrinkObject, null, "\t")}</pre>
                 </div>
             : null }
 
