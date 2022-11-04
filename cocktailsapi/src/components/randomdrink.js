@@ -35,6 +35,7 @@ function RandomDrink() {
 
     return (
         <div>
+            <h1>random drink</h1>
             <button onClick={(event) => {
                 event.preventDefault();
                 if (nextDrinkButton) {
