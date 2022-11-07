@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 10%
+}
+
+li {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}

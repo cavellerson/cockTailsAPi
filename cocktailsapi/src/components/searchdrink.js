@@ -2,20 +2,44 @@ import React, { useState, useEffect } from 'react'
 
 function SearchDrink() {
     const [drinkName, setDrinkName] = useState('')
+    const [drinksArray, setDrinksArray] = useState()
+
     useEffect(() => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
             .then((response) => response.json()
             .then((data) => {
-                console.log(data);
+                console.log(data.drinks);
+                setDrinksArray(data.drinks)
+
             }))
-    })
+    },[drinkName])
+
+
+
+    const handleSearchDrink = (event) => {
+        event.preventDefault();
+        setDrinkName(event.target.inputDrink.value)
+    }
+    // <pre>{JSON.stringify(drinksArray, null, "\n")}</pre>
+
     return(
         <div>
             <h1>search drink</h1>
-            <input type="text" name="inputDrink"onChange={(event) => {
-                event.preventDefault();
-                setDrinkName(event.target)
-            }}/>
+            <form onSubmit={handleSearchDrink}>
+                <label>Search Drink: </label>
+                <input type="text" name="inputDrink"/>
+            </form>
+            <ul>
+                {drinksArray ? drinksArray.map((drink) =>
+                    <li key={drink.idDrink}>
+                        {drink.strDrink}
+                        <img src={drink.strDrinkThumb}/>
+
+                    </li>
+
+                    ) : null}
+            </ul>
+
         </div>
     )
 }
