@@ -1,0 +1,30 @@
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 20%%
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin: 0 0 3em 0;
+    max-width: 30%;
+}
+
+
+.drinks {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    overflow: auto;
+    flex-wrap: wrap;
+    order: 5;
+}
+
+.drinks  img {
+    max-width: 100%;
+}
