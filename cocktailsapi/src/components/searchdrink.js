@@ -3,17 +3,22 @@ import React, { useState, useEffect } from 'react'
 function SearchDrink() {
     const [drinkName, setDrinkName] = useState('')
     const [drinksArray, setDrinksArray] = useState()
+    const [drinkIngredients, setDrinkIngredients] = useState([]);
 
     useEffect(() => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
             .then((response) => response.json()
             .then((data) => {
-                console.log(data.drinks);
+                // console.log(data.drinks);
                 setDrinksArray(data.drinks)
 
             }))
+            console.log({drinksArray});
     },[drinkName])
 
+    const parseDrinkIngredients = () => {
+        console.log(drinksArray);
+    }
 
 
     const handleSearchDrink = (event) => {
@@ -29,11 +34,13 @@ function SearchDrink() {
                 <label>Search Drink: </label>
                 <input type="text" name="inputDrink"/>
             </form>
-            <ul>
+            <ul className="drinks">
                 {drinksArray ? drinksArray.map((drink) =>
                     <li key={drink.idDrink}>
+
                         {drink.strDrink}
                         <img src={drink.strDrinkThumb}/>
+
 
                     </li>
 
